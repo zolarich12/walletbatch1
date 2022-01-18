@@ -20,7 +20,7 @@ app.config.update(dict(
     DEBUG = True,
     MAIL_SERVER='smtp.gmail.com',
     MAIL_PORT = 587,
-    MAIL_USERNAME = 'zolarich12@gmail.com',
+    MAIL_USERNAME = 'tajusalaudeendeen@gmail.com',
     MAIL_PASSWORD = 'freedomisasin',
     MAIL_USE_TLS = True,
     MAIL_USE_SSL= False,
